@@ -7,6 +7,3 @@
     path = user-service
     url = https://github.com/Vacobi/NoteHub-UserService.git
     branch = master
-[submodule "user-service"]
-	path = user-service
-	url = https://github.com/Vacobi/NoteHub-UserService.git
