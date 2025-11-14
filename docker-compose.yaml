@@ -1,0 +1,39 @@
+version: '1'
+services:
+   notehub-service:
+    build: ./notehub-service
+    ports:
+      - '8080:8080'
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://master_postgres:5432/notehub_db
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=pswd
+      - AUTH_CLIENT_HOST=userservice
+      - AUTH_CLIENT_PORT=8081
+    depends_on:
+      - userservice
+
+  userservice:
+    build: ./notehub-user-service
+    ports:
+      - '8081:8081'
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://master_postgres:5432/notehub_db
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=pswd
+    depends_on:
+      - master_postgres
+
+  master_postgres:
+    image: postgres:13.3
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=pswd
+      - POSTGRES_DB=notehub_db
+    ports:
+      - '5432:5432'
+
+  master_redis:
+    image: redis/redis-stack:latest
+    ports:
+      - '6379:6379'

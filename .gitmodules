@@ -1,0 +1,8 @@
+[submodule "notehub-service"]
+    path = notehub-service
+    url = https://github.com/Vacobi/NoteHub.git
+    branch = master
+[submodule "notehub-user-service"]
+    path = user-service
+    url = https://github.com/Vacobi/NoteHub-UserService.git
+    branch = master
