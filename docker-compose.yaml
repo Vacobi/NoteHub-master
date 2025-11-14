@@ -1,6 +1,6 @@
 version: '1'
 services:
-   notehub-service:
+  notehub-service:
     build: ./notehub-service
     ports:
       - '8080:8080'
@@ -14,7 +14,7 @@ services:
       - userservice
 
   userservice:
-    build: ./notehub-user-service
+    build: ./user-service
     ports:
       - '8081:8081'
     environment:
